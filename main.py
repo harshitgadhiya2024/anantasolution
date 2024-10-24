@@ -472,10 +472,9 @@ def upload_garment():
         username = login_dict["username"]
         path = f"static/data/{username}"
         data_set = []
-        count_number = app.config['mapping_user_folder'][username]
-        all_list = CommonOpertion().get_previous_numbers(count_number)
-        for folder in all_list:
-            all_files = CommonOpertion().get_files(path+f"/photoshoot_{folder}/")
+        all_folders = CommonOpertion().get_folders(path)
+        for folder in all_folders[:4]:
+            all_files = CommonOpertion().get_files(path+f"/{folder}/")
             for var in all_files:
                 if "garment" in var:
                     garment_path = f"static/data/{username}/{folder}/{var}"
@@ -529,10 +528,9 @@ def photoshoot():
         username = login_dict["username"]
         path = f"static/data/{username}"
         data_set = []
-        count_number = app.config['mapping_user_folder'][username]
-        all_list = CommonOpertion().get_previous_numbers_list(count_number)
-        for folder in all_list:
-            all_files = CommonOpertion().get_files(path+f"/photoshoot_{folder}/")
+        all_folders = CommonOpertion().get_folders(path)
+        for folder in all_folders:
+            all_files = CommonOpertion().get_files(path+f"/{folder}/")
             for var in all_files:
                 if "garment" in var:
                     garment_path = f"static/data/{username}/{folder}/{var}"
