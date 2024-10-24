@@ -265,7 +265,7 @@ def admin_client_data():
                                 "developer": developer, "city": city, "state": state, "country": country,
                                 "password": password, "inserted_on": datetime.now()}
 
-                change_password_link = f"http://127.0.0.1:5000/change_password?username={username}"
+                change_password_link = f"http://64.181.227.59/change_password?username={username}"
                 html_body = f"""
                     <html>
                       <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
