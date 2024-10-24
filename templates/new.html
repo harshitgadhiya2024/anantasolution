@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        /* Styling the upload container */
+        .upload-container {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            margin: 0 auto;
+            background-color: #2f2f3e;
+            color: white;
+            border-radius: 10px;
+        }
+        .upload-container input {
+            display: none;
+        }
+        .upload-container label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-container button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="upload-container">
+    <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" accept="image/*">
+        <label for="file-input">Drop files here or click to upload</label>
+        <button type="submit" id="submit-btn">Send</button>
+    </form>
+</div>
+
+<script>
+    const fileInput = document.getElementById('file-input');
+    const form = document.getElementById('upload-form');
+    const submitButton = document.getElementById('submit-btn');
+
+    // Automatically submit the form when an image is selected
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            form.submit(); // Submit form automatically
+        }
+    });
+
+    // Optional: Prevent manual form submission unless an image is selected
+    form.addEventListener('submit', (event) => {
+        if (fileInput.files.length === 0) {
+            alert("Please select a file to upload.");
+            event.preventDefault(); // Prevent form submission if no file is selected
+        }
+    });
+</script>
+
+</body>
+</html>
